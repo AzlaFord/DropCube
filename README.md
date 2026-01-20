@@ -1,40 +1,51 @@
+## Project Structure
+
+```
 fileshare/
-  apps/
-    api/                 # Go backend
-      cmd/
-        api/             # main.go (pornește serverul)
-      internal/
-        config/          # load env, config struct
-        db/              # connect, tx helpers
-        files/           # domain: upload/download, storage
-        http/            # router, handlers, middleware
-        auth/            # (mai târziu) login, sessions, jwt
-        users/           # (mai târziu) user management
-      migrations/        # SQL migrations (up/down)
-      pkg/               # (opțional) lucruri reusable extern
-      go.mod
-      go.sum
+├─ apps/
+│  ├─ api/                    # Go backend
+│  │  ├─ cmd/
+│  │  │  └─ api/              # main.go – pornește HTTP serverul
+│  │  ├─ internal/
+│  │  │  ├─ config/           # configurare, env, structs
+│  │  │  ├─ db/               # conexiune DB, tranzacții
+│  │  │  ├─ files/            # upload/download, storage logic
+│  │  │  ├─ http/             # router, handlers, middleware
+│  │  │  ├─ auth/             # autentificare (JWT, sesiuni) – viitor
+│  │  │  └─ users/            # management utilizatori – viitor
+│  │  ├─ migrations/          # SQL migrations (up/down)
+│  │  ├─ pkg/                 # cod reutilizabil (opțional)
+│  │  ├─ go.mod
+│  │  └─ go.sum
+│  │
+│  └─ web/                    # React frontend (Vite)
+│     ├─ src/
+│     │  ├─ api/              # request wrappers (fetch/axios)
+│     │  ├─ pages/            # Upload, FileView, Login
+│     │  ├─ components/       # componente UI
+│     │  ├─ hooks/
+│     │  ├─ router/
+│     │  └─ styles/
+│     ├─ index.html
+│     ├─ package.json
+│     └─ vite.config.ts
+│
+├─ deploy/
+│  ├─ docker/
+│  │  ├─ api.Dockerfile
+│  │  └─ web.Dockerfile
+│  └─ compose.yml             # Postgres + API + Web
+│
+├─ scripts/                   # scripturi helper
+├─ .env.example
+├─ .gitignore
+└─ README.md
+```
 
-    web/                 # React frontend
-      src/
-        api/             # fetch wrappers (axios/fetch)
-        pages/           # Upload, FileView, Login (mai târziu)
-        components/      # UI components
-        hooks/
-        router/
-        styles/
-      index.html
-      package.json
-      vite.config.ts
+### Notes
 
-  deploy/
-    docker/
-      api.Dockerfile
-      web.Dockerfile
-    compose.yml          # postgres + api + web (dev/prod)
-
-  scripts/               # helper scripts
-  .env.example
-  .gitignore
-  README.md
-
+* Backend-ul folosește **Go + clean architecture**
+* Frontend-ul este **React + Vite**
+* `internal/` este izolat conform convenției Go
+* Docker & Compose sunt separate pentru deploy
+* Structura este gândită pentru **scalare și extensii viitoare**
