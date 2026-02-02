@@ -10,6 +10,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", handlers.HealthHandler)
+	mux.HandleFunc("/upload", handlers.Upload)
 	loggedMux := middleware.Middleware(mux)
 
 	log.Println("Server running on :8080")
