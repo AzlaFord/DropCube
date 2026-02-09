@@ -9,11 +9,10 @@ import (
 )
 
 func main() {
-	db, err := db.ConnectDB()
-	
+	db, _ := db.ConnectDB()
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", handlers.HealthHandler)
-	mux.HandleFunc("/upload", handlers.Upload)
+	mux.HandleFunc("/upload", handlers.Upload(db))
 	loggedMux := middleware.Middleware(mux)
 
 	log.Println("Server running on :8080")
