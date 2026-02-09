@@ -1,6 +1,7 @@
 package main
 
 import (
+	"dropcube-api/internal/db"
 	"dropcube-api/internal/handlers"
 	"dropcube-api/internal/middleware"
 	"log"
@@ -8,6 +9,8 @@ import (
 )
 
 func main() {
+	db, err := db.ConnectDB()
+	
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", handlers.HealthHandler)
 	mux.HandleFunc("/upload", handlers.Upload)
