@@ -9,7 +9,11 @@ import (
 )
 
 func main() {
-	db, _ := db.ConnectDB()
+	db, err := db.ConnectDB()
+	if err != nil {
+		log.Fatalf("Cannot connect to DB: %v", err)
+	}
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", handlers.HealthHandler)
 	mux.HandleFunc("/upload", handlers.Upload(db))
