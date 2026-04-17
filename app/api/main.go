@@ -6,9 +6,12 @@ import (
 	"dropcube-api/internal/middleware"
 	"log"
 	"net/http"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	godotenv.Load()
 	db, err := db.ConnectDB()
 	if err != nil {
 		log.Fatalf("Cannot connect to DB: %v", err)

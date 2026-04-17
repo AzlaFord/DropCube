@@ -13,6 +13,7 @@ func ConnectDB() (*sql.DB, error) {
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	name := os.Getenv("DB_NAME")
+
 	db, err := sql.Open("postgres", "postgres://"+user+":"+password+"@"+host+":"+port+"/"+name+"?sslmode=disable")
 	if err != nil {
 		return db, err
