@@ -36,7 +36,6 @@ fileshare/
 │  │  └─ web.Dockerfile
 │  └─ compose.yml             # Postgres + API + Web
 │
-├─ scripts/                   # scripturi helper
 ├─ .env.example
 ├─ .gitignore
 └─ README.md
