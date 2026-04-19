@@ -18,6 +18,7 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
+	mux.HandleFunc("/files", handlers.ListFiles(db))
 	mux.HandleFunc("/health", handlers.HealthHandler)
 	mux.HandleFunc("/upload", handlers.Upload(db))
 	loggedMux := middleware.Middleware(mux)
