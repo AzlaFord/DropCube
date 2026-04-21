@@ -14,7 +14,7 @@ func GetFile(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var filepath string
 		var filename string
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/octet-stream")
 		fmt.Println("GET FILE:", r.URL.Path)
 		parts := strings.Split(r.URL.Path, "/")
 		idStr := parts[len(parts)-1]
@@ -42,10 +42,15 @@ func GetFile(db *sql.DB) http.HandlerFunc {
 		fmt.Println("PATH:", filepath)
 		fmt.Println("NAME:", filename)
 		file, err := os.Open(filepath)
+		if err != nil {
+			w.WriteHeader(405)
+			w.Write([]byte("bad request"))
+			return
+		}
 		defer file.Close()
-		w.Header().Set("Content-Disposition", "attachment; filename="+filename)
-		io.Copy(w, file)
 		w.WriteHeader(200)
 		w.Write([]byte("ok"))
+		w.Header().Set("Content-Disposition", "attachment; filename="+filename)
+		io.Copy(w, file)
 	}
 }
