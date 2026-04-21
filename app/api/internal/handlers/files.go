@@ -17,12 +17,14 @@ func ListFiles(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		var files []File
-		fmt.Println("LIST HIT")
+		fmt.Println(r.URL.Path)
+
 		if r.Method != http.MethodGet {
 			w.WriteHeader(405)
 			w.Write([]byte("bad request"))
 			return
 		}
+
 		rows, err := db.Query("Select id, filename, size From files")
 		if err != nil {
 			w.WriteHeader(405)
