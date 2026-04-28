@@ -47,7 +47,6 @@ func ListFiles(db *sql.DB) http.HandlerFunc {
 			return
 		}
 		w.WriteHeader(200)
-		w.Write([]byte("OK LIST"))
 		json.NewEncoder(w).Encode(files)
 		return
 	}

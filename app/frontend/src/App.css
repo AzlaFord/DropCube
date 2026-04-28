@@ -1,0 +1,162 @@
+.page {
+  width: 920px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.5px;
+  color: var(--text-h);
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--text);
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.meta {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.upload {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fileInput {
+  flex: 1 1 260px;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-h);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn.primary {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.fileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fileRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.fileRow:first-child {
+  border-top: none;
+}
+
+.fileMain {
+  min-width: 0;
+}
+
+.fileName {
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 560px;
+}
+
+.fileMeta {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.fileActions {
+  flex: 0 0 auto;
+}
+
+.empty {
+  padding: 12px 0;
+  color: var(--text);
+}
+
+.error {
+  color: #b00020;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    max-width: calc(100% - 24px);
+    padding-top: 16px;
+  }
+  .fileName {
+    max-width: 320px;
+  }
+}
