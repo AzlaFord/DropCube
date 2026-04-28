@@ -151,6 +151,24 @@
   font-size: 14px;
 }
 
+.success {
+  color: #1f7a1f;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.stack {
+  display: grid;
+  gap: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
 @media (max-width: 720px) {
   .page {
     max-width: calc(100% - 24px);
